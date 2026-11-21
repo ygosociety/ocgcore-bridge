@@ -1,0 +1,11 @@
+{
+  "data": [
+    { "id": 100, "name": "Test Warrior", "type": "Effect Monster", "race": "Warrior", "attribute": "DARK", "atk": 1800, "def": 1200, "level": 4, "archetype": "Sky Striker",
+      "card_images": [ { "id": 100 }, { "id": 1001 } ] },
+    { "id": 200, "name": "Test Fusion", "type": "Fusion Monster", "typeline": ["Fiend", "Fusion", "Effect"], "race": "Fiend", "attribute": "LIGHT", "atk": 2500, "def": 2000, "level": 8 },
+    { "id": 300, "name": "Test Link", "type": "Link Monster", "race": "Cyberse", "attribute": "LIGHT", "atk": 2300, "linkval": 2, "linkmarkers": ["Bottom", "Top"] },
+    { "id": 400, "name": "Test Quick-Play", "type": "Spell Card", "race": "Quick-Play" },
+    { "id": 500, "name": "Test Counter Trap", "type": "Trap Card", "race": "Counter" },
+    { "id": 600, "name": "Test Tuner", "type": "Tuner Monster", "race": "Machine", "attribute": "EARTH", "atk": 500, "def": 500, "level": 2 }
+  ]
+}

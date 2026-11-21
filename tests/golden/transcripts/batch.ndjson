@@ -1,0 +1,5 @@
+{"requests":31,"results":31,"allOk":true,"sameState":true,"sameSnapshot":true,"turn":4}
+{"conditional":["ok","skipped","skipped","illegal_answer"],"status":"none"}
+{"nested":2,"results":["players","bad_request"],"sameAsParent":true}
+{"empty":0,"main":"active"}
+{"noRequests":"bad_request"}

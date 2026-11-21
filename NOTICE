@@ -1,0 +1,20 @@
+ocgcore-bridge
+Copyright (C) the ocgcore-bridge contributors. Licensed under the GNU Affero General Public
+License, version 3 or (at your option) any later version. See LICENSE.
+
+This program links and uses:
+- edo9300/ygopro-core (https://github.com/edo9300/ygopro-core), AGPL-3.0-or-later; based on
+  Fluorohydride's YGOPro core (https://github.com/Fluorohydride/ygopro-core, MIT). Fetched at the
+  commit pinned in CMakeLists.txt.
+- Lua (bundled with ygopro-core), MIT. Copyright (C) 1994-2025 Lua.org, PUC-Rio.
+- nlohmann/json 3.11.3 (https://github.com/nlohmann/json), MIT. Copyright (c) 2013-2022 Niels
+  Lohmann.
+- SQLite (https://www.sqlite.org), public domain, when built with .cdb support (the system's).
+
+At run time it loads the card scripts of Project Ignis (https://github.com/ProjectIgnis/CardScripts,
+AGPL-3.0), unmodified, and reads card databases of Project Ignis' BabelCDB
+(https://github.com/ProjectIgnis/BabelCDB). data/setcodes.json is derived from BabelCDB and from
+EDOPro's system strings (https://github.com/ProjectIgnis/Distribution).
+
+This project is not affiliated with or endorsed by Project Ignis, the EDOPro team or Konami.
+Yu-Gi-Oh! card names and text are (C) Konami.

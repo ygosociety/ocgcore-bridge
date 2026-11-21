@@ -1,0 +1,5 @@
+{"fork1":47,"fork1End":[{"hand":4,"deck":34,"grave":0,"field":2},{"hand":5,"deck":33,"grave":2,"field":0}]}
+{"fork2":15,"fork2End":[{"hand":6,"deck":34,"grave":0,"field":0},{"hand":7,"deck":33,"grave":0,"field":0}]}
+{"nested":2,"nestedSteps":8}
+{"unchanged":true,"main":[{"hand":5,"deck":35,"grave":0,"field":0},{"hand":5,"deck":35,"grave":0,"field":0}]}
+{"gone":"no_session"}

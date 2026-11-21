@@ -1,0 +1,4 @@
+{"d1":"2","detached":true,"nested":"1/1","sameAsNested":true,"steps":24}
+{"d2":"3","d3":"4","d3detached":true,"d2fork":true}
+{"afterParentDestroyed":{"nested":"no_session","d1":"active","d2":"active"}}
+{"processes":6,"distinct":6,"leftAfterExit":0}

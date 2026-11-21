@@ -1,0 +1,3 @@
+{"queries":["card","chain","damageTaken","fieldCard"]}
+{"steps":132,"end":{"stop":"turns","turn":11}}
+{"damageTaken":{"value":[2500,0]},"hintsRecorded":0}

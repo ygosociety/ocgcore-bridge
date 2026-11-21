@@ -1,0 +1,19 @@
+{
+  "_comment": "A puzzle as init options (docs/protocol.md, init): boards placed before the duel, no opening hands, the first player may attack on turn 1. loc: LOCATION_* (4 = Monster Zone, 8 = Spell & Trap Zone); pos: POS_* (1 = face-up Attack, 10 = face-down).",
+  "description": "Two attackers against 3000 LP and a set Trap. Win this turn.",
+  "attackFirstTurn": true,
+  "players": [
+    {
+      "startingHand": 0,
+      "board": [
+        { "code": 70781052, "loc": 4, "seq": 0, "pos": 1 },
+        { "code": 71594310, "loc": 4, "seq": 2, "pos": 1, "materials": [69140098, 69140098] }
+      ]
+    },
+    {
+      "lp": 3000,
+      "startingHand": 0,
+      "board": [{ "code": 44095762, "loc": 8, "seq": 1, "pos": 10 }]
+    }
+  ]
+}

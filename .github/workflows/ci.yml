@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    # Free for public repositories; a private copy of the repository skips it.
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the agnostic check reads every commit message
+
+      - name: Agnostic check (files, file names, commit messages)
+        run: sh tests/agnostic_test.sh . --history
+
+      - name: Install build tools
+        run: sudo apt-get update && sudo apt-get install -y cmake g++ libsqlite3-dev
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Cache card data
+        uses: actions/cache@v4
+        with:
+          path: tests/data
+          key: card-data-${{ hashFiles('tests/golden/pins.json') }}
+
+      - name: Fetch the pinned card data (CardScripts, BabelCDB)
+        run: tests/golden/fetch-data.sh
+
+      - name: Configure
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build -j"$(nproc)"
+
+      - name: Unit and golden tests
+        run: ctest --test-dir build --output-on-failure
+
+      - name: TypeScript client tests
+        working-directory: client-ts
+        env:
+          OCGCORE_BRIDGE_BIN: ${{ github.workspace }}/build/ocgcore-bridge
+          OCGCORE_BRIDGE_SCRIPTS: ${{ github.workspace }}/tests/data/CardScripts
+          OCGCORE_BRIDGE_CDB: ${{ github.workspace }}/tests/data/BabelCDB/cards.cdb
+        run: |
+          npm install --no-audit --no-fund
+          npm test
+
+      - name: Examples
+        env:
+          OCGCORE_BRIDGE_BIN: ${{ github.workspace }}/build/ocgcore-bridge
+        run: |
+          node examples/random-duel.mjs 1
+          node examples/puzzle.mjs
+          node examples/puzzle.mjs examples/puzzles/lethal.lua
+          node examples/snapshot-fork.mjs
