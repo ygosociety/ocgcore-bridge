@@ -53,13 +53,16 @@ def main() -> None:
     aliases: dict[str, int] = {}
     seen: set[str] = set()
     by_name: dict[str, tuple[int, list[int]]] = {}
+    # names only an aliased row carries (a pre-release card that is an alias of its final
+    # printing but is the one with a script under its own id): a fallback to by_name
+    by_name_aliased: dict[str, tuple[int, list[int]]] = {}
     tokens: dict[str, list[int]] = {}
     for db in dbs:
         con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
         for row in con.execute("SELECT id, type, atk, def, level, race, attribute FROM datas WHERE type & 0x4000 != 0"):
             tokens.setdefault(str(row[0]), [int(row[1]), int(row[2]), int(row[3]), int(row[4]) & 0xFF, int(row[5]), int(row[6])])
-        for card_id, packed, name in con.execute("SELECT d.id, d.setcode, t.name FROM datas d JOIN texts t ON t.id = d.id WHERE d.alias = 0"):
-            by_name.setdefault(name, (int(card_id), unpack(packed or 0)))
+        for card_id, packed, name, alias in con.execute("SELECT d.id, d.setcode, t.name, d.alias FROM datas d JOIN texts t ON t.id = d.id"):
+            (by_name if not alias else by_name_aliased).setdefault(name, (int(card_id), unpack(packed or 0)))
         for card_id, packed, alias in con.execute("SELECT id, setcode, alias FROM datas"):
             key = str(card_id)
             if key in seen:
@@ -77,9 +80,10 @@ def main() -> None:
             listed = json.load(f)
         for card in listed["data"] if isinstance(listed, dict) else listed:
             key = str(card["id"])
-            if key in seen or card.get("name") not in by_name:
+            name = card.get("name")
+            if key in seen or (name not in by_name and name not in by_name_aliased):
                 continue
-            db_id, codes = by_name[card["name"]]
+            db_id, codes = by_name.get(name) or by_name_aliased[name]
             if db_id == card["id"]:
                 continue
             aliases[key] = db_id

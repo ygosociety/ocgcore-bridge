@@ -58,7 +58,7 @@ The engine needs two things at run time:
 ```
 
 ```json
-{"type":"ready","protocol":1,"version":"0.1.1"}
+{"type":"ready","protocol":1,"version":"0.1.2"}
 {"id":1,"type":"init","seed":42,"players":[{"main":[89631139,55144522,5318639,…]},{"main":[46986414,83764718,12580477,…]}]}
 {"id":1,"ok":true,"result":{"state":{"duel":"active","pending":{"kind":"idle","player":0,"activatable":[…],"toEnd":true,…},"turn":1,…}}}
 {"id":2,"type":"respond","answer":{"action":"activate","index":0}}
@@ -127,7 +127,7 @@ intended change.
 
 | | |
 |---|---|
-| ocgcore-bridge | 0.1.1 (protocol 1) |
+| ocgcore-bridge | 0.1.2 (protocol 1) |
 | ygopro-core | `6864373c24d7313c8e451df17877c12c4f713c46` (`CMakeLists.txt`) |
 | nlohmann/json | 3.11.3 |
 | CardScripts (tests) | `e25331536ab3c15a901e80098b955d804b5a6842` |

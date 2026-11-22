@@ -2,6 +2,14 @@
 
 All notable changes. Versions follow [semver](https://semver.org); 0.x until protocol v1 is settled.
 
+## 0.1.2
+
+### Changed
+- `data/setcodes.json` regenerated from BabelCDB `65c599c`. `tools/gen_setcodes.py` now also matches a
+  `cards.json` card by name to a database row that is itself an alias (a pre-release card with its own
+  script), so Marincess Blue Crystal Heart (30933452) and B.L.A.C.K. Parfait (65276253) get their
+  aliases and setcodes.
+
 ## 0.1.1
 
 ### Added
