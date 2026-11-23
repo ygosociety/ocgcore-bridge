@@ -2,6 +2,13 @@
 
 All notable changes. Versions follow [semver](https://semver.org); 0.x until protocol v1 is settled.
 
+## 0.1.3
+
+### Changed
+- `data/setcodes.json` keeps the aliases and setcodes of cards 20477370, 42651293,
+  47095439 and 81611932 that the 0.1.2 regeneration dropped, next to the 0.1.2 additions (30933452,
+  65276253).
+
 ## 0.1.2
 
 ### Changed

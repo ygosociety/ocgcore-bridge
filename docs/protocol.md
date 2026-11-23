@@ -34,7 +34,7 @@ one `LOCATION_*` bit, zone or pile index). 64-bit values that do not fit a JavaS
 
 | Message | When |
 |---|---|
-| `{ "type": "ready", "protocol": 1, "version": "0.1.2" }` | once, at start (after the command line's card data is loaded) |
+| `{ "type": "ready", "protocol": 1, "version": "0.1.3" }` | once, at start (after the command line's card data is loaded) |
 | `{ "id": ..., "ok": true, "result": { ... } }` | the reply to a request |
 | `{ "id": ..., "ok": false, "error": { "code": "...", "message": "..." } }` | a rejected request |
 | `{ "type": "ask", "ask": 1, "prompt": { ... }, "context": { ... } }` | the ask hook (see `init.responder.ask`) |
@@ -79,7 +79,7 @@ Any request may carry `"session": "<id>"` to address a fork (see `fork`).
 
 ```json
 {"id":1,"type":"hello"}
-{"id":1,"ok":true,"result":{"cards":14759,"cdb":true,"fork":false,"pid":4242,"protocol":1,"queries":["card","chain","fieldCard"],"version":"0.1.2"}}
+{"id":1,"ok":true,"result":{"cards":14759,"cdb":true,"fork":false,"pid":4242,"protocol":1,"queries":["card","chain","fieldCard"],"version":"0.1.3"}}
 ```
 
 `cdb`: .cdb databases are supported (built with SQLite). `cards`: cards loaded. `fork`: this
